@@ -1,10 +1,8 @@
 <template>
-    <div class="flex flex-col h-full">
-        <main class="flex-auto flex flex-row">
-            <div class="flex-auto p-4">
-                <router-view />
-            </div>
-        </main>
+    <div>
+        <h1>Vuex base state issue</h1>
+        <p>Turn off "New Vuex backend"</p>
+        <p>Int value: {{ intValue }}</p>
     </div>
 </template>
 
@@ -13,7 +11,14 @@
 export default {
     name: "App",
     created() {
-        console.log('Stores length:', this.$store.getters['store/stores'].length);
+        console.log("Int value is", this.$store.getters["int"]);
+        this.$store.commit('UPDATE_INT');
+        console.log("Int value is", this.$store.getters["int"]);
+    },
+    computed: {
+        intValue() {
+            return this.$store.getters["int"];
+        },
     },
 }
 </script>
